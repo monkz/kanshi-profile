@@ -1,0 +1,4 @@
+#!/bin/bash
+echo profile ${2} \{
+	swaymsg -t get_outputs | jq -r '.[] | "    output \"" + .make + " " + .model + " " + .serial  + "\" mode " + (.current_mode.width | tostring) + "x" + (.current_mode.height | tostring) + "@" + (.current_mode.refresh / 1000 | tostring) + "Hz position " + (.rect.x | tostring) + "," + (.rect.y | tostring)  + " scale " + (.scale | tostring) + " transform " + .transform'
+echo \}
